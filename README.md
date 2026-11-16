@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-[Write a short description of the project in your own words.]
+This project explores the use of Naive Bayes and Support Vector Machines to classify movie reviews as positive or negative.
 
 ## Dataset
 
