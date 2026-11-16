@@ -1,0 +1,48 @@
+2000
+2000
+(2000, 2)
+sentiment
+1    1000
+0    1000
+Name: count, dtype: int64
+Training samples: 1600
+Testing samples: 400
+Baseline accuracy: 0.5
+Training matrix: (1600, 36352)
+Testing matrix: (400, 36352)
+Naive Bayes accuracy: 0.8175
+SVM accuracy: 0.85
+TF-IDF training matrix: (1600, 36352)
+TF-IDF testing matrix: (400, 36352)
+Best parameters: {'svm__C': 10, 'tfidf__ngram_range': (1, 2)}
+Best CV accuracy: 0.8412499999999999
+Optimized SVM accuracy: 0.8475
+              precision    recall  f1-score   support
+
+           0       0.82      0.81      0.82       200
+           1       0.81      0.82      0.82       200
+
+    accuracy                           0.82       400
+   macro avg       0.82      0.82      0.82       400
+weighted avg       0.82      0.82      0.82       400
+
+              precision    recall  f1-score   support
+
+           0       0.86      0.83      0.85       200
+           1       0.84      0.86      0.85       200
+
+    accuracy                           0.85       400
+   macro avg       0.85      0.85      0.85       400
+weighted avg       0.85      0.85      0.85       400
+
+              precision    recall  f1-score   support
+
+           0       0.89      0.80      0.84       200
+           1       0.81      0.90      0.86       200
+
+    accuracy                           0.85       400
+   macro avg       0.85      0.85      0.85       400
+weighted avg       0.85      0.85      0.85       400
+
+[[167  33]
+ [ 27 173]]
