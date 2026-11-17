@@ -78,6 +78,58 @@ print(classification_report(y_test, nb_predictions))
 print(classification_report(y_test, svm_predictions))
 print(classification_report(y_test, optimized_predictions))
 print(confusion_matrix(y_test, svm_predictions))
+import matplotlib.pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay
+
+Path("results").mkdir(exist_ok=True)
+
+# Model accuracy comparison
+models = [
+    "Dummy",
+    "Naive Bayes\nBoW",
+    "Linear SVM\nBoW",
+    "Tuned SVM\nTF-IDF"
+]
+
+accuracies = [
+    accuracy_score(y_test, baseline_predictions) * 100,
+    accuracy_score(y_test, nb_predictions) * 100,
+    accuracy_score(y_test, svm_predictions) * 100,
+    accuracy_score(y_test, optimized_predictions) * 100
+]
+
+fig, ax = plt.subplots(figsize=(8, 4))
+
+bars = ax.bar(
+    models, accuracies,
+    color=["#9E9EA7", "#6689A3", "#23476A", "#47808E"]
+)
+
+ax.set_ylabel("Test accuracy (%)")
+ax.set_ylim(0, 100)
+ax.bar_label(bars, fmt="%.2f%%")
+
+fig.tight_layout()
+fig.savefig("results/accuracy_comparison.png", dpi=300)
+plt.close(fig)
+
+# Confusion matrix
+fig, ax = plt.subplots(figsize=(5, 4))
+
+cm = confusion_matrix(
+    y_test, svm_predictions, labels=[0, 1]
+)
+
+display = ConfusionMatrixDisplay(
+    confusion_matrix=cm,
+    display_labels=["Negative", "Positive"]
+)
+
+display.plot(ax=ax, cmap="Blues", values_format="d")
+
+fig.tight_layout()
+fig.savefig("results/confusion_matrix.png", dpi=300)
+plt.close(fig)
 
 import joblib
 joblib.dump(baseline, "models/baseline.joblib")
